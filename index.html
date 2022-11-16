@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Card</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/9c6c2127b6.js" crossorigin="anonymous"></script>
+    <style>
+        .card-img-top{
+            width: 286px;
+            height: 286px;
+        }
+        .container{
+            margin-top: 50px;
+        }
+        .card-plus{
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: right;
+        }
+        .card-plus a{
+            border:2px solid black;
+            border-radius: 10px;
+            padding: 8px;
+        }
+        .card-plus a:hover{
+            background-color: #ebe0a9;
+        }
+
+        .card-plus a i{
+            color: #acad7b;
+            float: left;
+        }
+        .card-plus-notify{
+            display: inherit;
+            float: left;
+            padding: 5px;
+        }
+        .card-plus-notify i{
+            padding-right: 5px;
+        }
+        .card-plus-notify p{
+            padding-right: 5px;
+            font-weight: 500;
+        }
+        .info-total-amount{
+            display: flex;
+            justify-content: right;
+            margin-right: 50px;
+            font-weight: 500;
+        }
+        .info-notify-pay{
+            float: left;
+            font-weight: 500;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card-plus">
+            <a class="card-plus-notify">
+                <i class="fa fa-cart-plus" aria-hidden="true" style="font-size:30px"></i>
+                <p>Giỏ hảng</p>
+                <p class="count-shoppingCard">0</p>
+            </a>
+        </div>
+        <div class="content-product">
+            <div class="row">
+                <div class="col-4">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top img-thumbnail"  src="./img/iphone1.jpg" alt="Card image cap">
+                        <div class="card-body">
+                          <h5 class="card-title">Iphone 13 promax</h5>
+                          <p class="card-price">Price : 15.000.000</p>
+                          <p class="card-quantity">Quantity : 10</p>
+                          <a class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i> Add card</a>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-4">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top img-thumbnail" src="./img/iphone2.jpg" alt="Card image cap">
+                        <div class="card-body">
+                          <h5 class="card-title">Iphone 13 promax</h5>
+                          <p class="card-text">Price : 12.000.000</p>
+                          <a class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i> Add Card</a>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-4">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top img-thumbnail" width="286px" height="286px" src="./img/iphone3.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Iphone 13 promax</h5>
+                            <p class="card-text">Price : 12.000.000</p>
+                            <a class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i> Add Card</a>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="md-shoppingcard-detail" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Thông tin giỏ hàng</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered" id="tbl-shoppingcard-detail">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Image</th>
+                            <th>Product Name</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Total Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+                <p class="info-notify-pay"></p>
+                <p class="info-total-amount"></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-success" id="btn-pay">Thanh toán</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    <script src="index.js"></script>
+</body>
+</html>
